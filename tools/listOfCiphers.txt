@@ -1,0 +1,10 @@
+Alphabet based:
+    Vignere
+    ROT-13
+    Caesar
+    Baconian Cipher
+Numerical based:
+    Base64
+    Binary
+    Hex
+

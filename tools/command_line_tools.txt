@@ -1,0 +1,3 @@
+exiftools - to look at photo exif data (meta data)
+binwalk - to extract any embedded files or executables from a photo
+xxd - to turn a file's binary into hexadecimal completely and dump out the result.
