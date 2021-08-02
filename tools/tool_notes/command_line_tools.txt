@@ -1,0 +1,77 @@
+ - Symbols
+    - AA = After Access is gained
+    - * = 
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Photo Forensics:
+    exiftools - to look at photo exif data (meta data)
+    binwalk - to extract any embedded files or executables from a photo
+    steghide - to hide or decode messages inside images or audio files 
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Binary File:
+    xxd - to turn a file's binary into hexadecimal completely and dump out the result.
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Enumeration:
+    
+    Swiss Army:
+        Metasploit(msfconsole) - 
+
+    Networking:
+        nc (NetCat) - Port listener that will give you control of a port through a terminal among other things 
+        nmap - Enumeration essential for scanning ports
+        ssh - Secure Shell Protocol with RSA encryption which can be overcome with someone's rsa private key.
+    
+    Hashing and Cracking:
+        john the ripper - useful for many methods of encryption such as RSA Public key encryption.
+    
+    Searching:
+
+        Files and Directories:
+            dirsearch - Search for a specific directory in a server.
+            dirbuster - Bruteforcing application for website directories.
+
+            Samba Servers:
+                smbclient - Linux way to interact with SMB.
+                smbget - Gets files on samba shares as long as a share(nmap script to find), username and password are known.
+
+        Users and Passwords:
+            enum4linux - for enumerating from a linux maching onto a Windows or Samba(Windows repurposed) machine
+            (AA) linPEAS - Linux priviledge escalation to find possible ways
+            to escalate to a non-anonymous user or sudo/root.
+
+    Proxies and Web:
+        Burp Suite - Allows the control and analysis of incoming and outcoming communications/packets.
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Priviledge Escalation:
+    
+    *nix:
+        /bin/sh - opens a shell (can be useful for SUID programs accessible by a user that is also accessible.
+        find / -perm -u=s -type f 2>/dev/null - to find all files in the system that have root execution.
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Unix Helpers:
+    tee - for piping input and output easily
+    ifconfig - for seeing network information and ipaddress
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Nmap commands:
+    // To see any mounts on a smb server accesible through rpcbind
+    nmap -p <rpcbind port> --script=nfs-ls,nfs-statfs,nfs-showmount <ip of where smb is located>
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
