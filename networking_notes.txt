@@ -1,0 +1,52 @@
+Open Systems Interconnection Model (The Networking Model)
+Layer 1:
+    The User Layer (Application)
+Layer 2:
+    The Program Layer (Presentation)
+    - The translator between the innerworkings and the GUI, and also vice versa.
+Layer 3:
+    Session Layer (Session)
+    - Establishes some sort of same-time connection between two devices to try and
+    sync their data.
+    - Creation of packets.
+Layer 4:
+    Transport Layer (Transport [kind of the same as layer3])
+    - Either TCP or UDP connections.
+Layer 5:
+    Network Layer (Network) / Routers
+    - Communication of the recieved data through IP addresses.
+Layer 6:
+    Data Link Layer (Data Link) / Switches
+    - Data is linked from software packets and IP addresses to MAC addresses located in NIC(Network Interface Card).
+    - Switches can split up packets to go to the network or use IP/TCP protocol to send them out, and from device to device on the same network.
+Layer 7:
+    Physical Layer (Physical)
+    - Physical CPU, hardware, cables, and bits/bytes.
+
+
+Type of Protocols:
+    
+    Device Communication
+        TCP (Transmission Control Protocol) - Standard device to device protocol that is secure with the Three-way Handshake.
+        UDP (User Datagram Protocol) - Stream of data that can be incomplete, low latency and reliability.
+        ARP (Address Resolution Protocol) - MAC addresses can be connected to IP Address by a device broadcasting the question of who has a certain IP Address in which the corresponding MAC
+            address will respond.
+        DHCP (Dynamic Host Configuration Protocol) - MAC addresses without an IP Address will be assigned an IP address on a network through this protocol.
+
+    Internet Communication
+        HTTP Headers (additional optional information send with HTTP requests):
+            Browser to Server
+                Host - Which website (especially if a single domain has many websites)
+                User-Agent - Version of browser and browser software.
+                Content Length - The size of the data sent in the request.
+                Accept Encoding - Tells the web server what type of encoding the browser may support.
+                Cookie - Typically data sent to the server, especially if the web server has requested the browser to use one.
+
+            Server to Browser
+                Set-Cookie - Tells the browser to set a certain cookie (info to store) in it.
+                Cache-Control - How long to store the data until it should request a fresh data batch.
+                Content-Type - The type of content (Video, image, audio, txt, html)
+                Content-Encoding - The compression used on a file being sent.
+        HTTP 
+        HTTPS
+        URL (Uniform Resource Locator) - Specifically to tell your browser what to do.

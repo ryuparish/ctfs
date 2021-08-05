@@ -22,16 +22,22 @@ Binary File:
 Enumeration:
     
     Swiss Army:
-        Metasploit(msfconsole) - 
+        Metasploit(msfconsole) - Database with interactive shell to run known exploits on targets. ALWAYS SET LHOST TO BE THM VPN IP!!!!!!!
+
+    ---------------------------------------
 
     Networking:
         nc (NetCat) - Port listener that will give you control of a port through a terminal among other things 
         nmap - Enumeration essential for scanning ports
         ssh - Secure Shell Protocol with RSA encryption which can be overcome with someone's rsa private key.
     
+    ---------------------------------------
+
     Hashing and Cracking:
         john the ripper - useful for many methods of encryption such as RSA Public key encryption.
     
+    ---------------------------------------
+
     Searching:
 
         Files and Directories:
@@ -43,9 +49,11 @@ Enumeration:
                 smbget - Gets files on samba shares as long as a share(nmap script to find), username and password are known.
 
         Users and Passwords:
-            enum4linux - for enumerating from a linux maching onto a Windows or Samba(Windows repurposed) machine
+            enum4linux - for enumerating from a linux machine onto a Windows or Samba(Windows repurposed) machine
             (AA) linPEAS - Linux priviledge escalation to find possible ways
             to escalate to a non-anonymous user or sudo/root.
+
+    ---------------------------------------
 
     Proxies and Web:
         Burp Suite - Allows the control and analysis of incoming and outcoming communications/packets.
@@ -53,18 +61,58 @@ Enumeration:
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 
+
 Priviledge Escalation:
+
+    Things to think about:
+        - SUID files
+        - Writeable /etc/passwd to make a new superuser
+        - Root execution of vi
+        - Cronjobs with root user
     
+    ---------------------------------------
+
     *nix:
         /bin/sh - opens a shell (can be useful for SUID programs accessible by a user that is also accessible.
-        find / -perm -u=s -type f 2>/dev/null - to find all files in the system that have root execution.
+
+        " find / -perm -u=s -type f 2>/dev/null " - to find all files in the system that have root setting on execution.
+
+        " export PATH=/tmp:$PATH " - For setting a temporary executable in tmp for path variable abuse.
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 
 Unix Helpers:
+
     tee - for piping input and output easily
+
     ifconfig - for seeing network information and ipaddress
+
+    whoami - See the currnet user's username
+
+    curl (client URL) - Allow arbitrary sending of http requests
+
+    cat - Show the contents of a file
+
+    less - Show the contents of a file
+
+    echo "$SHELL" - Show which shell the user is currently using
+
+    ps -p $$ - Show which shell the user is currently using reliably
+
+    /etc/passwd - Catting/lessing this file will show all the 
+    users in the server at the bottom of the list.
+    
+    /etc/shells - Catting/lessing this file will show all the
+    shells available.
+
+    ls -la /etc/passwd - List priviledges from passwd.
+
+    find / -perm -u=s -type f 2>/dev/null - Find SUID files in a linux filesystem for privesc. Read man for details : "You must specify `u', `g' or `o' if you use a symbolic mode."
+
+    lsb_release -a (linux standard base) - Shows short title information about linux distro
+    and linux version.
+
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
@@ -75,3 +123,5 @@ Nmap commands:
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+
+Windows Powershell  (WTF)
