@@ -2,6 +2,12 @@
     - AA = After Access is gained
     - * = 
 
+
+Things to think about when stuck:
+    "Is there anything I can just bruteforce?"
+    "What else is open for me to input?"
+    "Is the version exploitable? Are there known exploits to this technology?"
+
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 
@@ -22,7 +28,16 @@ Binary File:
 Enumeration:
     
     Swiss Army:
-        Metasploit(msfconsole) - Database with interactive shell to run known exploits on targets. ALWAYS SET LHOST TO BE THM VPN IP!!!!!!!
+        Metasploit(msfconsole) - Database with interactive shell to run known exploits on targets. 
+            * ALWAYS SET LHOST TO BE THM VPN IP!!!!!!!
+            * ALWAYS SET THE LHOST, PAYLOAD, AND LPORT WHEN USING METERPRETER SHELL FOR WINDOWS MACHINES
+
+    ---------------------------------------
+
+    Brute Forcing:
+        gobuster - For bruteforcing directories and files on a webserver
+        dirbuster - For bruteforcing directories and files on a webserver
+        hydra - For bruteforcing usernames and passwords on ssh, http, https, etc.
 
     ---------------------------------------
 

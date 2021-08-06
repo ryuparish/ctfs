@@ -1,3 +1,0 @@
-Samba, Server Message Block (SMB) ports:
-    445
-    139
