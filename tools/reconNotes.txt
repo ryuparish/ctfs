@@ -1,0 +1,33 @@
+Breached Credentials:
+
+    Discovering Email Addresses:
+        1. Hunter.com for emails and names.
+        2. Phonebook.cz for phone numbers, emails.
+        3. Clearbit (chrome extension that gives roles, names, emails, LinkedIn, and titles)
+        
+        Email Verification:
+            (Although false positives are very possible)
+            1. EmailHippo
+            2. EmailChecker
+
+    Hashed Passwords:
+        1. Dehashed - Returns everything for a price and lets you form a network from little pieces of data.
+
+    Subdomains:
+        1. Sublist3r - For finding subdomains of a single domain.
+        2. crt.sh (website) - For Finding subdomains online.
+        3. OWASP AMASS - Very strong but lengthy program.
+        
+        Probers for testing if a domain is actually alive:
+            1. tomnomnoms httprobe - To probe a list of http links to test if they are actually alive and 
+                inactive.
+    Identifying Technology (language, CMS, version, etc):
+        1. Wappalyzer - Extension that shows you what type of tech a website you are uses.
+        2. BuiltWith - Online search to tell what tech a site uses.
+        3. Whatweb (terminal) - Tells what type of tech a site uses and the version number.
+
+    Misc:
+        Google Search Operators - filetype: (csv, pdf, docx, jpeg).
+        Social Media - Emails, Credentials, Tech Stack, as much info as possible for social engineering.
+    Practice:
+        Kioptrix - 
