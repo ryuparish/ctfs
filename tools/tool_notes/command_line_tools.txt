@@ -81,6 +81,22 @@ Enumeration:
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 
+Exploitation
+
+    Payloads:
+
+        Reverse Shells:
+            - Sometimes switching from a staged to a non-staged or vice versa can fix a problem of the shell "dying".
+
+    Brute Force:
+    
+        - Password Spraying / Credential stuffing with BurpSuite.
+
+    Default Credentials:
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
 
 Priviledge Escalation:
 
