@@ -46,8 +46,8 @@ Enumeration:
         nc (NetCat) - Port listener that will give you control of a port through a terminal among other things 
         nmap - Enumeration essential for scanning ports
         ssh - Secure Shell Protocol with RSA encryption which can be overcome with someone's rsa private key.
-            - Sometimes even failing to login-in to SSH can reveal a banner that has some information about how to log in or
-            just some sort of additional information.
+                * Sometimes even failing to login-in to SSH can reveal a banner that has some information about how to log in or
+                just some sort of additional information.
     
     ---------------------------------------
 

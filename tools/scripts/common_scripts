@@ -1,0 +1,2 @@
+Stable Shells:
+    - " python -c 'import pty;pty.spawn("/bin/bash");' "
