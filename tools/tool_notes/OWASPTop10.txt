@@ -1,0 +1,10 @@
+1. Injection
+2. Broken Authentication (places are accessible regardless of authentication)
+3. Sensitive Data Exposure
+4. XML EE 
+5. Broken Access Control (users/groups can access things they are not mean't to access)
+6. Security Misconfiguration (Default Passwords)
+7. Cross-Site Scripting (JavaScript fucking across the browser)
+8. Insecure Deserialization (Allowing the delivery arbitrary binary data such as malicious protobufs/serialized info)
+9. Known Vulnerabilities (Outdated systems)
+10. Insufficient Logggin and Monitoring (Lack of investigation and tracking information to see what happens when something goes wrong)
