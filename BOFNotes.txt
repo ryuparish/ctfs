@@ -1,2 +1,0 @@
-Program crashed with about 2000 bytes of data.
-EIP = 77B370B4

