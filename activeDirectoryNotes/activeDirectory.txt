@@ -1,0 +1,32 @@
+Active Directory Attacks
+
+
+LLMNR - Link Local Multicast Name Resolution
+
+When a DNS on a server fails on a domain controller/server, the server may let out a broadcast to try and resolve the DNS that is requested. While the broadcast
+happens, we can listen using something like Responder and catch the request and instead obtain the hashes of the username and password, which is always
+sent in an LLMNR broadcast.
+
+
+SMB Relay Attack
+
+*** IMPORTANT ***
+*** SMB SIGNING MUST BE DISABLED ***
+*** USER BEING RELAYED MUST BE AN ADMIN ***
+
+When we receive a hashed password/username from a target and aim to use it on a SMB (by relaying to it) we can impersonate them. We can do this by 
+using ntlxrelayx.py (in impacket). 
+
+An easy way to check if an smb fileshare port is vulnerable to an SMB relay attack is the use the nmap command:
+    
+    "nmap --script=smb2-security-mode.nse -p445 <target IP>/24"
+
+Bouncing the hashed credentials will involve these commands:
+    
+    Responder to catch the broadcast:
+        "responder -I eth0 -rdwv"
+            * Make sure to turn off SMB server off and HTTP server off as well, for some unknown reason.
+
+    Then, ntlxrelayx.py to relay the responder info received:
+        "ntlmrelayx.py -tf targets.txt -smb2support"
+        

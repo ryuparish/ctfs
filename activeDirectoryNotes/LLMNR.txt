@@ -1,0 +1,5 @@
+LLMNR - Link Local Multicast Name Resolution
+
+When a DNS on a server fails on a domain controller/server, the server may let out a broadcast to try and resolve the DNS that is requested. While the broadcast
+happens, we can listen using something like Responder and catch the request and instead obtain the hashes of the username and password, which is always
+sent in an LLMNR broadcast.

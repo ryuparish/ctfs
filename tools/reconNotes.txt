@@ -21,6 +21,7 @@ Breached Credentials:
         Probers for testing if a domain is actually alive:
             1. tomnomnoms httprobe - To probe a list of http links to test if they are actually alive and 
                 inactive.
+
     Identifying Technology (language, CMS, version, etc):
         1. Wappalyzer - Extension that shows you what type of tech a website you are uses.
         2. BuiltWith - Online search to tell what tech a site uses.
@@ -29,5 +30,6 @@ Breached Credentials:
     Misc:
         Google Search Operators - filetype: (csv, pdf, docx, jpeg).
         Social Media - Emails, Credentials, Tech Stack, as much info as possible for social engineering.
+        
     Practice:
         Kioptrix - 
