@@ -111,6 +111,12 @@ IP Addresses:
         - 10.0.0.0 (Class A)
 
 Common Ports and Protocols:
+    
+    LDAP/LDAPS 
+        Lightweight Directory Access Protocol - Servers that allow open access as long as you have authorization.
+            Basically, a weaker and less secure SMB. It only provides authentication rather than all the things SMB does.
+                * SOMETIMES SENDS CREDENTIALS IN PLAIN TEXT!
+
 
     TCP:
 
@@ -128,6 +134,7 @@ Common Ports and Protocols:
 
 
     UDP:
+
         DNS (53) - Domain Name Server
 
         DHCP (67, 68) (Dynamic Host Configuration Protocol) - MAC addresses without an IP Address will be assigned

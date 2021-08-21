@@ -8,12 +8,25 @@
 =======================================================================================
 =======================================================================================
 =======================================================================================
+  These things are best done at busy times where people are sending lots of requests.
+=======================================================================================
 
-    LLMNR - Link Local Multicast Name Resolution
+    Attacking AD:
+        1. Run mitm6 or responder at the beginning of the day.
+        2. Run scans.
+        3. Run scans on http with http_version (metasploit) to be quiet.
+        4. Look for default credentials.
+        5. Think outside the box.
+
+
+    LLMNR Poisoning- Link Local Multicast Name Resolution
     
     When a DNS on a server fails on a domain controller/server, the server may let out a broadcast to try and resolve the DNS that is requested. While the broadcast
     happens, we can listen using something like Responder and catch the request and instead obtain the hashes of the username and password, which is always
     sent in an LLMNR broadcast.
+
+    We can try to capture credentials sent in LLMNR/NBT-NS/DNS packets by using responder:
+        "responder -I eth0 -rdwv"
 
 =======================================================================================
 
@@ -54,6 +67,39 @@
     2. Enable SMB signing on all devices.
 
     3. Local Administration restriction.
+
+
+=======================================================================================
+
+    IPv6 Attack
+
+    The idea with a IPv6 attack is that no one is authenticating IPv6 addresses. Because of this, we can catch
+    the IPv6 info (which will be in the NTLM form [hashes]) and then we can relay the info to the Domain Controller.
+
+    It is the most useful when someone tries to authenticate, and we
+    pass the NTLM data and use mitm6 to create our own account on the
+    DC.
+
+    Commands:
+        1. "mitm6 -d xxxx.local"
+            - This will allows us to spoof as a fake IPv6 address on the DC.
+
+        2. "ntlmrelayx.py -6 -t ldaps://<DC IP> -wh fakewpad.<DC Domain> -l lootme"
+            - This will relay the info to the DC and try to authenticate.
+            - Along with access, it will enumerate tons of information.
+
+
+    ***********************************
+
+                Defenses
+
+    ***********************************
+
+    1. Disable IPv6
+
+    2. Enable LDAPS and LDAP signing and channel binding
+
+    3. Mark Admins as Protected Users, as this will disallow delegationg attacks.
 
 
 =======================================================================================
