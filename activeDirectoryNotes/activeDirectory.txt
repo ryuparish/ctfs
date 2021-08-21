@@ -103,3 +103,28 @@
 
 
 =======================================================================================
+=======================================================================================
+
+                        Post Comprimise Enumeration
+
+=======================================================================================
+=======================================================================================
+
+    PowerView:
+        Powershell Commands (after running "powershell -ep bypass"):
+        **PowerView Upload**
+        - Get-NetDomain
+        - Get-NetDomainController
+        - Get-DomainPolicy
+        - (Get-DomainPolicy)."system access"
+        - Get-NetUser [| select [cn, samaccountname, etc] ]
+        - Get-NetGroupMember 
+        - Invoke-ShareFinder
+        - Get-NetGPO 
+
+    BloodHound:
+        - First, you need to upload SharpHound.ps1 on the machine.
+        - Then run:
+            "Invoke-BloodHound -CollectionMethod All -Domain MARVEL.local -ZipFileName file.zip"
+        - You then need to copy the data to another machine (I don't know which yet)
+
