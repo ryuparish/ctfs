@@ -1,10 +1,53 @@
+Open-Source Web Application Security Project Top 10 Vulnerabilities
+
 1. Injection
+    - SQL Injection
+
 2. Broken Authentication (places are accessible regardless of authentication)
+    - Default passwords.
+    - Login Error Information Leaking (Invalid email, Invalid password vs. Invalid Email or Password)
+        * Username enumaration
+    - Weak Credentials.
+    - Bad password resetting process that is easy to crack.
+    - Brute-Forcable. (no rate limiting or captcha)
+    - Consistent session id (session fixation.
+
 3. Sensitive Data Exposure
-4. XML EE 
+    - Exactly how it sounds.
+    - HSTS Downgrade attack
+    - SSL Cipher Strength (nmap --script=ssl-enum-ciphers -p 443 tesla.com)
+
+4. XML EE (XXE)
+    - Using a XML payload for extracting system file information.
+
 5. Broken Access Control (users/groups can access things they are not mean't to access)
+    - User gets access to somewhere they shouldn't. (admin section, dev section)
+    - Seeing "id=..." on url and being able to change with no log on.
+    - Emulating another user with no login.
+
 6. Security Misconfiguration (Default Passwords)
-7. Cross-Site Scripting (JavaScript fucking across the browser)
+    - Default Credentials
+    - Default Configurations (debug enabled)
+    - Any file upload is allowed due to default.
+
+7. Cross-Site Scripting (JavaScript/DOM (document object model) fucking across the browser)
+    - Reflected XSS (shows on the screen but does not maintain after refresh.
+    - Stored XSS (stores xss as a username, comment, photo, password, info, etc)
+    * Defense *
+        * Encoding : < becomes &lt; , <script> becomes &lt;script>.
+        * Filtering : <script> becomes script.
+        * Validating : Compare input against white list.
+        * Sanitization : Combination of escaping, filtering, and validation.
+
 8. Insecure Deserialization (Allowing the delivery arbitrary binary data such as malicious protobufs/serialized info)
+    - Deserializing and running of arbitrary serialzed code (JSON, YAML, Protobufs, binaries, XML, etc)
+        Basically trusting any source of serialized code.
+    - ysoserial
+
 9. Known Vulnerabilities (Outdated systems)
-10. Insufficient Logggin and Monitoring (Lack of investigation and tracking information to see what happens when something goes wrong)
+    - CVEs
+
+10. Insufficient Logging and Monitoring (Lack of investigation and tracking information to see what happens when something goes wrong)
+    - Lack of logging of attacks and lack of reaction/proactivity.
+    - No blacklisting.
+
