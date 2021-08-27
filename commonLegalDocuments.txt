@@ -1,0 +1,27 @@
+Common Legal Documents
+
+Sales(1)
+
+    - Mutual Non-Disclosure Agreement (NDA)
+
+    - Master Service Agreement (MSA)
+        * Discloses what both parties are going to do.
+
+    - Statement of Work (SOW)
+        * How much it costs and what both parties are going to do.
+        * Discloses what both parties are going to do.
+
+    - Other: Sample Report, Recommendation Letters, etc.
+        * Sample Report
+            ~ Example of what you will produce when you are done (Findings Report).
+
+
+Before You Test(2)
+    - Rules of Engagement(ROE/CYA[cover your ass])
+        * Typically no social engineering.
+        * Typically absolutely no Denial of Service.
+        * Cannot start Pen Test before it is signed.
+
+After You Test(3)
+    - Findings Report
+        * What you found at a high level and at a low level.
