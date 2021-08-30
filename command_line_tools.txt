@@ -1,10 +1,19 @@
-
 Things to think about when stuck:
     
     Don't know what to do next:
         "Is there anything I can just bruteforce?"
         "Does this service have default credentials?"
         "What else is open for me to input?"
+        "Is there a place where I can try to see for a local file inclusion exploit?"
+            - When you can't see the files, you can put
+                "../etc/passwd"
+                "../../etc/passwd"
+                "../../../passwd"...
+
+                Until you find the hashed passwords.
+        "Have you tried to switch users?"
+        "Have you seen if "groups" returns anything interesting?"
+        "Can you try to write something to tmp? Is it even world writable?"
 
     Exploit Found but still stuck:
         "If I found an exploit, or maybe even if I haven't, is there a place the service stores a database? Can I access that place?"
@@ -108,8 +117,6 @@ Exploitation
     Brute Force:
     
         - Password Spraying / Credential stuffing with BurpSuite.
-
-    Default Credentials:
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------

@@ -140,7 +140,8 @@ Common Ports and Protocols:
         DHCP (67, 68) (Dynamic Host Configuration Protocol) - MAC addresses without an IP Address will be assigned
         an IP address on a network through this protocol.
 
-        TFTP (69) - 
+        TFTP (69) - Trivial File Transfer Protocol.
+            - The default directory for uploaded files is "/var/lib/tftpboot"
 
         SNMP (161) - Simple Network Management Protocol.
 
