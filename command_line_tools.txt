@@ -13,6 +13,7 @@ Things to think about when stuck:
                 Until you find the hashed passwords.
         "Have you tried to switch users?"
         "Have you seen if "groups" returns anything interesting?"
+        "Have you checked GTFOBins for privesc? It contains many privesc scripts for vulnerable binaries."
         "Can you try to write something to tmp? Is it even world writable?"
 
     Exploit Found but still stuck:
@@ -121,6 +122,8 @@ Exploitation
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 
+Linux Servers:
+
 
 Priviledge Escalation:
 
@@ -130,6 +133,8 @@ Priviledge Escalation:
         - Writeable /etc/passwd to make a new superuser
         - Root execution of vi
         - Cronjobs with root user
+        - Uploading files to tmp/dev/shm (shared memory folder ?typically world-writable?)
+        - Try using bash <script> instead of ./<script>
     
     ---------------------------------------
 
@@ -139,11 +144,14 @@ Priviledge Escalation:
         " find / -perm -u=s -type f 2>/dev/null " - to find all files in the system that have root setting on execution.
 
         " export PATH=/tmp:$PATH " - For setting a temporary executable in tmp for path variable abuse.
+        
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 
 Unix Helpers:
+
+    The .ssh directory - If there is an id_rsa key in the file, you can mv the id_rsa.pub into the directory "authenticated_keys" which can also just be created. This will allow ssh if you then use the id_rsa file as the private key logging in.
 
     strings - Can be used to find special keywords and printable characters in a binary file EVEN while being executed to see what the executable binary is actually doing.
 

@@ -1,2 +1,10 @@
 Stable Shells:
     - " python -c 'import pty;pty.spawn("/bin/bash");' "
+    - To allow "clear" 'export TERM=screen'
+    - To background CTRL-Z
+    - To disallow repeat, background the process then do "stty raw -echo"
+    on your own terminal then fg back into the nc session and it should
+    be gone.
+Quick privesc:
+    - Try mysql and then try to spawn a shell like:
+        * \! /bin/bash or \! /bin/sh
