@@ -61,6 +61,9 @@ Enumeration:
         gobuster - For bruteforcing directories and files on a webserver
         dirbuster - For bruteforcing directories and files on a webserver
         hydra - For bruteforcing usernames and passwords on ssh, http, https, etc.
+        hashcat - For cracking hashed passwords. Remember that hashcat has hashmodes for different hashes, so try "hashcat -h | grep <relevant name>" to try to find a hash mode.
+            * ie. sudo hashcat -m 7900 -a 0 -o cracked.txt hash /usr/share/wordlists/rockyou.txt --force
+             
         john(john the ripper) - Password cracking from all sorts of formats such a zip, sha256, md5, etc.
         sqlmap - Spams all sorts of different sql attacks to (including blind) to try and get the database.
             * Can be used to gain a shell with --os-shell if it is PostGRES. 
@@ -139,6 +142,7 @@ Priviledge Escalation:
         - Cronjobs with root user
         - Uploading files to tmp/dev/shm (shared memory folder ?typically world-writable?)
         - Try using bash <script> instead of ./<script>
+        - Accessing a database of some sort (remember that most databases can be accessed through the command line! ie. mysql)
     
     ---------------------------------------
 
@@ -153,7 +157,7 @@ Priviledge Escalation:
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 
-Unix Helpers:
+Unix Native:
 
     The .ssh directory - If there is an id_rsa key in the file, you can mv the id_rsa.pub into the directory "authenticated_keys" which can also just be created. This will allow ssh if you then use the id_rsa file as the private key logging in.
 
