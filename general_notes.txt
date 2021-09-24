@@ -111,6 +111,8 @@ Enumeration:
 
     Proxies and Web:
         Burp Suite - Allows the control and analysis of incoming and outcoming communications/packets.
+        wpscan - Enumerates WordPress websites.
+            - wpscan --url <URL> --detection-mode aggressive -e ap(stands for all plugins) -o wpscan.txt
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
@@ -209,6 +211,13 @@ Unix Native:
     netstat -ano - This will list all the active ports on a machine.
 
     arp -a - To look at the ARP table of a machine.
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Databases:
+    mysql - Command line tool for accesing local machine databases
+        * ie. mysql -h <TARGET HOST> -u <USERNAME> -p -D <DATABASE NAME>
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
