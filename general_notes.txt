@@ -141,8 +141,10 @@ Priviledge Escalation:
         - SUID files
         - Writeable /etc/passwd to make a new superuser
         - Root execution of vi
+        - Any useful groups that you are a part of?
         - Cronjobs with root user
         - Uploading files to tmp/dev/shm (shared memory folder ?typically world-writable?)
+        - Looking at operating system with uname -a or cat /etc/lsb-release
         - Try using bash <script> instead of ./<script>
         - Accessing a database of some sort (remember that most databases can be accessed through the command line! ie. mysql)
     
@@ -197,11 +199,16 @@ Unix Native:
     /etc/shells - Catting/lessing this file will show all the
     shells available.
 
+    initctl - Controls the initializer (that typically runs as root) in /etc/init. All the files in this
+    folder can be run by initctl. ie. initctl <configuration here>
+
     ls -la /etc/passwd - List priviledges from passwd.
 
     find - Allows you to search the filesystem starting at some directory with specified attributes
 
         * find / -perm -u=s -type f 2>/dev/null - Find SUID files in a linux filesystem for privesc. Read man for details : "You must specify `u', `g' or `o' if you use a symbolic mode."
+
+        * find /(or home/<USER>) -type f -readable -ls 2>/dev/null - Find any files that are world readable.
 
         * find / -type f -group somegroup - Find all files that belong to a certain group (can be run by those group members)
 
