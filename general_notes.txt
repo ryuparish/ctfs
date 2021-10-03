@@ -2,6 +2,7 @@ Things to think about when stuck:
     
     Don't know what to do next:
         "Is there anything I can just bruteforce?"
+        "Can I reuse some credentials for ssh or maybe just some other login?"
         "Does this service have default credentials?"
         "What else is open for me to input?"
         "Is there a place where I can try to see for a local file inclusion exploit?"
