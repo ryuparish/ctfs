@@ -4,6 +4,7 @@ Things to think about when stuck:
         "Is there anything I can just bruteforce?"
         "Can I reuse some credentials for ssh or maybe just some other login?"
         "Does this service have default credentials?"
+        "Have you looked for any databases? Maybe credentials to a database found in a configuration file?"
         "What else is open for me to input?"
         "Is there a place where I can try to see for a local file inclusion exploit?"
             - When you can't see the files, you can put
@@ -63,7 +64,8 @@ Enumeration:
         dirbuster - For bruteforcing directories and files on a webserver
         hydra - For bruteforcing usernames and passwords on ssh, http, https, etc.
         hashcat - For cracking hashed passwords. Remember that hashcat has hashmodes for different hashes, so try "hashcat -h | grep <relevant name>" to try to find a hash mode.
-            * ie. sudo hashcat -m 7900 -a 0 -o cracked.txt hash /usr/share/wordlists/rockyou.txt --force
+            * ie. sudo hashcat -m 7900 -a 0 -o cracked.txt hash /usr/share/wordlists/rockyou.txt --force // To use MD5 hash-based crack with rockyou wordlist
+            * ie. echo <some_password> | hashcat -r /opt/hashcat/rules/best64.rule --stdout
              
         john(john the ripper) - Password cracking from all sorts of formats such a zip, sha256, md5, etc.
         sqlmap - Spams all sorts of different sql attacks to (including blind) to try and get the database.
